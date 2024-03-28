@@ -1,4 +1,4 @@
-# Minio-Firebase Migration Tool
+# Firebase-to-MinIO Migration Tool
 
 This project provides a script for migrating images from Firebase Storage to a MinIO storage instance. It's built with Node.js and TypeScript, offering a straightforward way to transfer files without modifying them.
 
