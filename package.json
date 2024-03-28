@@ -1,0 +1,22 @@
+{
+  "name": "firebase-to-minio-migration",
+  "version": "1.0.0",
+  "description": "The Firebase-to-MinIO Migration Tool simplifies moving objects from Firebase Storage to MinIO, offering a straightforward and secure data transfer solution.",
+  "main": "src/migrate.ts",
+  "scripts": {
+    "start": "npx ts-node --transpile-only src/migrate.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "firebase-admin": "^12.0.0",
+    "minio": "^7.1.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
+  }
+}
