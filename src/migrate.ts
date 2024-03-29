@@ -2,6 +2,7 @@ import * as admin from 'firebase-admin';
 import { Client as MinioClient } from 'minio';
 import dotenv from 'dotenv';
 import { Readable } from 'stream';
+import mime from 'mime'; // Import the mime library
 
 dotenv.config();
 
@@ -29,7 +30,15 @@ const minioClient = new MinioClient({
 const minioBucketName = process.env.MINIO_BUCKET_NAME as string; // Your MinIO bucket name
 
 async function uploadStreamToMinio(fileKey: string, stream: Readable) {
-  return minioClient.putObject(minioBucketName, fileKey, stream);
+  // Use the mime library to determine the MIME type based on the file extension
+  const contentType = mime.getType(fileKey) || 'binary/octet-stream';
+
+  // Set the metadata, including Content-Type
+  const metaData = {
+    'Content-Type': contentType,
+  };
+
+  return minioClient.putObject(minioBucketName, fileKey, stream, metaData);
 }
 
 async function migrateObjects() {
